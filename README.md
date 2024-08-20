@@ -1,6 +1,6 @@
-# NexREPL
+# nexREPL
 
-**TODO: Add description**
+An experimental Elixir [nREPL](https://nrepl.org/nrepl/index.html) server.
 
 ## Installation
 
@@ -19,3 +19,9 @@ Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_do
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at <https://hexdocs.pm/nexrepl>.
 
+
+## License
+
+nexREPL is released under the terms of the [Apache License 2.0](LICENSE).
+
+Copyright (c) 2024, [Michael Russo](https://mjrusso.com).

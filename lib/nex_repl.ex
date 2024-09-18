@@ -1,18 +1,19 @@
 defmodule NexREPL do
   @moduledoc """
-  Documentation for `NexREPL`.
+  An implementation of the nREPL server protocol in Elixir.
   """
 
   @doc """
-  Hello world.
+  Starts the nREPL server.
 
   ## Examples
 
-      iex> NexREPL.hello()
-      :world
+      iex> NexREPL.start_server()
+      {:ok, pid}
 
   """
-  def hello do
-    :world
+  def start_server(opts \\ []) do
+    {server_opts, _gen_server_opts} = Keyword.split(opts, [:port])
+    NexREPL.Server.start_link(server_opts)
   end
 end

@@ -3,6 +3,52 @@
 An experimental (proof of concept) Elixir
 [nREPL](https://nrepl.org/nrepl/index.html) server.
 
+## Rationale and Motivation
+
+### Why?
+
+Elixir ships with an excellent REPL ([IEx](https://hexdocs.pm/iex/IEx.html)),
+which even supports [remote
+shells](https://hexdocs.pm/iex/IEx.html#module-remote-shells) out-of-the-box.
+However, there's no standard way to evaluate the code you're writing in your
+editor directly in the context of an IEx session.
+
+The Clojure community uses [nREPL](https://nrepl.org/nrepl/index.html) to
+integrate their editor with their REPL. nREPL doesn't seem to have taken off
+outside of the Clojure ecosystem, but the protocol is
+[language-agnostic](https://nrepl.org/nrepl/index.html#beyond-clojure), and
+there are already [ready-made clients for most
+editors](https://nrepl.org/nrepl/usage/clients.html).
+
+If IEx could understand the nREPL protocol, that would theoretically turn all
+the red cells to green in the IEx column of [Thomas
+Millar](https://github.com/thmsmlr)'s Elixir scripting spreadsheet (see [this
+tweet](https://x.com/thmsmlr/status/1814354658858524944)).
+
+### Why Not?
+
+This project validates that an Elixir nREPL server works with existing
+(non-Elixir) nREPL clients.
+
+However, to actually make this approach viable for development, nREPL features
+like evaluating the expression at the current point need to work. This requires
+some understanding of the structure of Elixir code; the core logic for teasing
+out the structure could live in the nREPL client exclusively, or alternatively
+primarily on the server.
+
+In either case, unfortunately, client modifications will be necessary. Thus,
+one of the major benefits of using nREPL in the first place (existing clients
+are already written for most editors) is no longer that helpful.
+
+### A Potential Path Forward
+
+What if instead we implemented similar functionality using the LSP, perhaps
+piggybacking on a new "eval code" [Code
+Action](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_codeAction)
+request? With this approach, the client problem is solved, and the LSP server
+(which understands code structure) could send the code directly to a networked
+IEx shell for evaluation, providing the same benefits as nREPL.
+
 ## Installation
 
 To install from GitHub, run:

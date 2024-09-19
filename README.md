@@ -3,6 +3,10 @@
 An experimental (proof of concept) Elixir
 [nREPL](https://nrepl.org/nrepl/index.html) server.
 
+## Demo
+
+See [this tweet](https://twitter.com/mjrusso/status/1836458349463847153).
+
 ## Rationale and Motivation
 
 ### Why?

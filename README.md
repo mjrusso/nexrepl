@@ -53,6 +53,12 @@ request? With this approach, the client problem is solved, and the LSP server
 (which understands code structure) could send the code directly to a networked
 IEx shell for evaluation, providing the same benefits as nREPL.
 
+### Additional Discussion
+
+See [this
+thread](https://elixirforum.com/t/extending-iex-to-have-nrepl-capabilities/64872)
+on Elixir Forum.
+
 ## Installation
 
 To install from GitHub, run:
